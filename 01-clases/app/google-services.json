@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "798868137372",
+    "project_id": "bsrg-2024-sw-gr2",
+    "storage_bucket": "bsrg-2024-sw-gr2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798868137372:android:49af9f0fdabfc0eac6d459",
+        "android_client_info": {
+          "package_name": "com.example.a2024aswgr2bsrg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLQq_C_tLF2cFAbt1b_eLCfD2wTqMFLoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
