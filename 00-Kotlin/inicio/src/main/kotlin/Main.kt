@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun main() {
     print("Hola mundo")
@@ -64,6 +65,58 @@ fun main() {
     //calcularSueldo(sueldo, tasa, bonoEspecial)
     calcularSueldo(10.00, bonoEspecial = 20.00)
     calcularSueldo(bonoEspecial = 20.00, sueldo = 10.00, tasa = 14.00)
+
+
+    //-------------------------USO DE CLASES------------------------
+    val sumaUno = Suma(1,1)
+    val sumaDos = Suma(null,1)
+    val sumaTres = Suma(1, null)
+    val sumaCuatro = Suma(null,null)
+    sumaUno.sumar()
+    sumaDos.sumar()
+    sumaTres.sumar()
+    sumaCuatro.sumar()
+
+    println(Suma.pi)
+    println(Suma.historialSumas)
+
+
+    //-------------------------------ARREGLOS-----------------------------
+    //Arreglos estáticos
+    val arregloEstatico: Array<Int> = arrayOf<Int>(1,2,3)
+    println(arregloEstatico[0])
+
+    //Arreglo dinámico
+    val arregloDinamico: ArrayList<Int> = arrayListOf<Int>(
+        1,2,3,4,5,6,7,8,9,10
+    )
+    println(arregloDinamico)
+    arregloDinamico.add(11)
+    arregloDinamico.add(12)
+    println(arregloDinamico)
+
+    //------------------------OPERADORES PARA ARREGLOS----------------------------
+    //FOR EACH -> Unit            Sirve para iterar un arreglo
+    val respuestaForEach:Unit = arregloDinamico.forEach { valorActual: Int ->
+        println("Valor actual: ${valorActual}")
+    }
+
+    //Utilizar el "it" que significa el elemento iterado
+    arregloDinamico.forEach{ println("Valor actual (it): ${it}") }
+
+
+    //MAP                 Modifica el arreglo
+    //1) Enviamos el nuevo valor de la iteración
+    //2) Devuelve un nuevo arreglo con valores de las iteraciones
+
+    val respuestaMap: List<Double> = arregloDinamico.map{valorActual:Int ->
+        return@map valorActual.toDouble() + 100.00
+    }
+
+    println(respuestaMap)
+
+    val respuestaMapDos = arregloDinamico.map { it + 15 }
+
 }
 
 
@@ -122,10 +175,34 @@ abstract class Numeros( //Constructor Primario
     }
 }
 
-abstract class Suma(unoParametro:Int, dosParametro:Int): Numeros(unoParametro, dosParametro){
+class Suma(unoParametro:Int, dosParametro:Int): Numeros(unoParametro, dosParametro){
     //Publico es opcional
     public val soyPublicoExplicito:String="Explicito"
     val soyPublicoImplicito:String="Implicito"
+
+    constructor(
+        uno: Int?,
+        dos: Int
+    ):this(
+        if(uno==null) 0 else uno,
+        dos
+    )
+
+    constructor(
+        uno: Int,
+        dos: Int?
+    ):this(
+        uno,
+        if(dos==null) 0 else dos
+    )
+
+    constructor(
+        uno: Int?,
+        dos: Int?
+    ):this(
+        if(uno==null) 0 else uno,
+        if(dos==null) 0 else dos
+    )
 
     init {
         this.numeroUno
@@ -155,5 +232,9 @@ abstract class Suma(unoParametro:Int, dosParametro:Int): Numeros(unoParametro, d
         }
 
     }
+
+
+
+
 }
 
