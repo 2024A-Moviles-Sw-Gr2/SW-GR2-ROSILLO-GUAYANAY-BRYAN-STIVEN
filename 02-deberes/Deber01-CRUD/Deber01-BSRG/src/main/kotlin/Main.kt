@@ -5,7 +5,10 @@ import javax.swing.JOptionPane
 
 
 fun main(){
-    var ventanaRopa:VentanaRopa
+    var ventanaRopa = VentanaRopa(arrayOf("Nombre", "Precio", "¿Está de moda?", "Lanzamiento", "Vida útil"))
+    var ventanaDiseniador = VentanaDiseniador(arrayOf("Nombre", "Valor de mercado", "N° Colecciones", "¿Creador Unisex?", "Ropa creada"))
+
+
     var opcionAccesoCRUD = 0
 
     while (opcionAccesoCRUD!=2){
@@ -13,14 +16,16 @@ fun main(){
         opcionAccesoCRUD = Ventana.crearVentanaBienvenida()
         when(opcionAccesoCRUD){
 
+            //OPCIONES CRUD DE DISEÑADOR
             (0) -> {
                 var opcionDiseniador = 0
                 while (opcionDiseniador!=3){
-                    opcionDiseniador = Ventana.crearVentanaPrincipalDiseniador()
+                    opcionDiseniador = ventanaDiseniador.crearVentanaPrincipal("CRUD de diseñador", Diseniador.obtenerRegistroDiseniador())
 
                     when(opcionDiseniador){
+                        //Crear Diseñador
                         (0)->{
-                            var resultado = Ventana.crearVentanaCrearDiseniador()
+                            var resultado = ventanaDiseniador.crearVentanaCrear()
                             var diseniador = Diseniador(
                                 resultado[0]?.getText().toString(),
                                 resultado[1]?.getText().toString().toLong(),
@@ -50,41 +55,49 @@ fun main(){
                             Diseniador.agregarRegistroDiseniador(diseniador)
 
                         }
+
+                        //Actualizar Diseñador
                         (1)->{
-                            var opcionActualizarDiseniador = Ventana.crearVentanaActualizarDiseniador()
+                            var opcionActualizarDiseniador = ventanaDiseniador.crearVentanaActualizar("Actualizar diseñador")
 
                             when(opcionActualizarDiseniador){
                                 (0)->{
-                                    Diseniador.actualizarRegistroDiseniador(Ventana.obtenerDatosTablaDiseniador())
+                                    Diseniador.actualizarRegistroDiseniador(ventanaDiseniador.obtenerDatosTabla())
                                 }
                             }
                         }
+
+                        //Eliminar Diseñador
                         (2)->{
-                            var opcionEliminarDiseniador = Ventana.crearVentanaEliminarDiseniador()
+                            var opcionEliminarDiseniador = ventanaDiseniador.crearVentanaCrearEliminar("Eliminar diseñador")
 
                             when(opcionEliminarDiseniador){
                                 (0)->{
-                                    Diseniador.eliminarRegistroDiseniador(Ventana.retornarFilaSeleccionadaTablaDiseniador());
+                                    Diseniador.eliminarRegistroDiseniador(ventanaDiseniador.retornarFilaSeleccionadaTabla());
                                 }
                             }
 
                         }
 
+                        //Roper bucle - Salir
                         else->{
                             break
                         }
                     }
                 }
             }
-            (1) -> {
 
+            //OPCIONES CRUD DE ROPA
+            (1) -> {
                 var opcionRopa = 0
                 while (opcionRopa!=3){
-                    opcionRopa = Ventana.crearVentanaPrincipalRopa()
+                    opcionRopa = ventanaRopa.crearVentanaPrincipal("CRUD de ropa", Ropa.obtenerRegistroRopa())
 
                     when(opcionRopa){
+
+                        //Crear Ropa
                         (0) -> {
-                            var resultado = Ventana.crearVentanaCrearRopa()
+                            var resultado = ventanaRopa.crearVentanaCrear()
 
                             Ropa.agregarRegistroRopa(Ropa(
                                 resultado[0]?.getText().toString().replace("\n",""),
@@ -96,30 +109,37 @@ fun main(){
 
                         }
 
+                        //Actualizar Ropa
                         (1)->{
-                            var opcionActualizarRopa = Ventana.crearVentanaActualizarRopa()
+                            var opcionActualizarRopa = ventanaRopa.crearVentanaActualizar("Actualizar ropa")
 
                             when(opcionActualizarRopa){
                                 (0)->{
-                                    Ropa.actualizarRegistroRopa(Ventana.obtenerDatosTablaRopa())
+                                    Ropa.actualizarRegistroRopa(ventanaRopa.obtenerDatosTabla())
                                 }
                             }
                         }
+
+                        //Eliminar Ropa
                         (2)->{
-                            var opcionEliminarRopa = Ventana.crearVentanaEliminarRopa()
+                            var opcionEliminarRopa = ventanaRopa.crearVentanaCrearEliminar("Eliminar ropa")
 
                             when(opcionEliminarRopa){
                                 (0)->{
-                                    Ropa.eliminarRegistroRopa(Ventana.retornarFilaSeleccionadaTablaRopa())
+                                    Ropa.eliminarRegistroRopa(ventanaRopa.retornarFilaSeleccionadaTabla())
                                 }
                             }
                         }
+
+                        //Romper bucle - Salir
                         else->{
                             break
                         }
                     }
                 }
             }
+
+            //Romper bucle - SALIR del programa
             else -> {
                 JOptionPane.showMessageDialog(null, "Gracias por usar el programa.")
                 break

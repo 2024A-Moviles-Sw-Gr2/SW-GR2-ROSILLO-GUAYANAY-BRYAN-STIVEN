@@ -27,8 +27,8 @@ class Diseniador {
         fun obtenerRegistroDiseniador(): Array<Array<String>>{
             var stringTokenizerFila = StringTokenizer(File("src/main/resources/diseniador.txt").readText(), ";")
             var matriz: Array<Array<String>> = Array(stringTokenizerFila.countTokens()){Array(5) { "" } }
-            var fila:Int = 0
-            var columna:Int = 0
+            var fila = 0
+            var columna = 0
 
             while(stringTokenizerFila.hasMoreTokens()){
                 var valor = stringTokenizerFila.nextToken().toString()

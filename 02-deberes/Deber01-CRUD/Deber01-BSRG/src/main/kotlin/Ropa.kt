@@ -24,19 +24,14 @@ class Ropa {
     }
 
 
-
     companion object{
-        fun agregarRegistroRopa(ropa:Ropa){
-            var cadena = "\n"+ropa.nombre + "," + ropa.precio + "," + ropa.tendencia + "," + ropa.lanzamiento + "," + ropa.aniosVidaUtil
-            File("src/main/resources/ropa.txt").appendText(cadena+";")
-        }
 
         fun obtenerRegistroRopa():Array<Array<String>>{
 
             var stringTokenizerFila = StringTokenizer(File("src/main/resources/ropa.txt").readText(), ";")
             var matriz: Array<Array<String>> = Array(stringTokenizerFila.countTokens()){Array(5) { "" } }
-            var fila:Int = 0
-            var columna:Int = 0
+            var fila = 0
+            var columna = 0
 
             while(stringTokenizerFila.hasMoreTokens()){
                 var valor = stringTokenizerFila.nextToken().toString()
@@ -53,6 +48,11 @@ class Ropa {
 
             return matriz
 
+        }
+
+        fun agregarRegistroRopa(ropa:Ropa){
+            var cadena = "\n"+ropa.nombre + "," + ropa.precio + "," + ropa.tendencia + "," + ropa.lanzamiento + "," + ropa.aniosVidaUtil
+            File("src/main/resources/ropa.txt").appendText(cadena+";")
         }
 
         fun eliminarRegistroRopa(id:Int){
