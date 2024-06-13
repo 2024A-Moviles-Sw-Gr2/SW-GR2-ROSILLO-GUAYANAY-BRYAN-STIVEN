@@ -31,4 +31,12 @@
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="270dp" />
 
+    <Button
+        android:id="@+id/btn_ir_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ciclo_vida"
+        tools:layout_editor_absoluteX="270dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
