@@ -10,7 +10,7 @@ class ACicloVida : AppCompatActivity() {
 
     var textoGlobal = ""
 
-    fun mostrarSackBar(texto:String){
+    fun mostrarSnackBar(texto:String){
         textoGlobal += texto
         val snack = Snackbar.make(
             findViewById(R.id.cl_ciclo_vida),
@@ -24,36 +24,38 @@ class ACicloVida : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aciclo_vida)
+
+
     }
 
     override fun onStart() {
         super.onStart()
-        mostrarSackBar("OnStart")
+        mostrarSnackBar("OnStart")
     }
 
     override fun onResume() {
         super.onResume()
-        mostrarSackBar("OnResume")
+        mostrarSnackBar("OnResume")
     }
 
     override fun onRestart() {
         super.onRestart()
-        mostrarSackBar("OnRestart")
+        mostrarSnackBar("OnRestart")
     }
 
     override fun onPause() {
         super.onPause()
-        mostrarSackBar("OnPause")
+        mostrarSnackBar("OnPause")
     }
 
     override fun onStop() {
         super.onStop()
-        mostrarSackBar("OnStop")
+        mostrarSnackBar("OnStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mostrarSackBar("OnDestroy")
+        mostrarSnackBar("OnDestroy")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -72,7 +74,7 @@ class ACicloVida : AppCompatActivity() {
         //Recuperar las variables
         val textoRecuperadoDeVariable: String? = savedInstanceState.getString("variableTextoGuardado")
         if(textoRecuperadoDeVariable!=null){
-            mostrarSackBar(textoRecuperadoDeVariable)
+            mostrarSnackBar(textoRecuperadoDeVariable)
             textoGlobal = textoRecuperadoDeVariable
         }
     }
