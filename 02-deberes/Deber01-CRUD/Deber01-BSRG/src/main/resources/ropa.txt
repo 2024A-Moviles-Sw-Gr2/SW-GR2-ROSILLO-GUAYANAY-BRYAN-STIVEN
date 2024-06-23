@@ -1,4 +1,6 @@
 Zapatos,123.04,true,Sun Jan 05 00:00:00 ECT 2025,12;
-Chaleco,12.02,true,Mon Dec 02 00:00:00 ECT 2024,99;
 Medias,123.02,false,Mon Dec 02 00:00:00 ECT 2024,12;
 Abrigo,123.02,false,Mon Dec 02 00:00:00 ECT 2024,12;
+Manilla,9878.0,false,Sun Feb 05 00:00:00 ECT 2012,99;
+Saco,1232.04,false,Mon Dec 02 00:00:00 ECT 2024,23;
+Cadena,1231.0,true,Sun May 05 00:00:00 ECT 2024,123;

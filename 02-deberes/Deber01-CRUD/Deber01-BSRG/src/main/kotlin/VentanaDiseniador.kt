@@ -5,7 +5,7 @@ import javax.swing.*
 class VentanaDiseniador(nombresColumnas: Array<String>):Ventana(nombresColumnas){
 
     override fun crearVentanaCrear(): Array<JTextField?> {
-        var nombreCampos:Array<String> = arrayOf("Nombre: ", "Valor de mercado: ", "Número de  colecciones: ", "¿Creador unisex?: ")
+        var nombreCampos:Array<String> = arrayOf("Nombre: ", "Valor de mercado: ", "Número de  colecciones: ", "¿Creador unisex? (true/false): ")
         var camposEntrada = arrayOfNulls<JTextField>(nombreCampos.size+1)
         var panel = JPanel()
         panel.setLayout(BoxLayout(panel, BoxLayout.Y_AXIS))
@@ -83,12 +83,24 @@ class VentanaDiseniador(nombresColumnas: Array<String>):Ventana(nombresColumnas)
 
         panel.add(listaRopaPanel)
 
-        JOptionPane.showConfirmDialog(
+        var resultadoVentana = JOptionPane.showConfirmDialog(
             null,
             panel,
             "Crear diseñador",
             JOptionPane.OK_CANCEL_OPTION
         )
+
+        if(resultadoVentana==JOptionPane.CANCEL_OPTION||resultadoVentana==JOptionPane.CLOSED_OPTION){
+            camposEntrada = emptyArray()
+        }else{
+            for(campo in camposEntrada){
+                if (campo?.getText().equals("")||campo==null){
+                    JOptionPane.showMessageDialog(null, "Uno o más campos no fueron completados.","ERROR",JOptionPane.ERROR_MESSAGE)
+                    camposEntrada = emptyArray()
+                    break
+                }
+            }
+        }
 
         return camposEntrada
     }

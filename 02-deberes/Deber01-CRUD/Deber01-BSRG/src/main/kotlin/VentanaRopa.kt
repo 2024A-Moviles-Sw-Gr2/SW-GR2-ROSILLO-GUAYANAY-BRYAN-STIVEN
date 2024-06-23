@@ -4,7 +4,7 @@ class VentanaRopa(nombresColumnas: Array<String>) :Ventana(nombresColumnas) {
 
 
     override fun crearVentanaCrear(): Array<JTextField?> {
-        var nombreCampos:Array<String> = arrayOf("Nombre: ", "Precio: ", "¿Está en tendencia?: ", "Fecha de lanzamiento: ","Años de vida útil: ")
+        var nombreCampos:Array<String> = arrayOf("Nombre: ", "Precio: ", "¿Está en tendencia? (true/false): ", "Fecha de lanzamiento (dd/mm/yyyy): ","Años de vida útil: ")
         var camposEntrada = arrayOfNulls<JTextField>(nombreCampos.size)
         var panel = JPanel()
         panel.setLayout(BoxLayout(panel, BoxLayout.Y_AXIS))
@@ -19,12 +19,24 @@ class VentanaRopa(nombresColumnas: Array<String>) :Ventana(nombresColumnas) {
             panel.add(segundoPanel)
         }
 
-        JOptionPane.showConfirmDialog(
+        var resultadoVentana = JOptionPane.showConfirmDialog(
             null,
             panel,
             "Crear ropa",
             JOptionPane.OK_CANCEL_OPTION
         )
+
+        if(resultadoVentana==JOptionPane.CANCEL_OPTION||resultadoVentana==JOptionPane.CLOSED_OPTION){
+            camposEntrada = emptyArray()
+        }else{
+            for(campo in camposEntrada){
+                if (campo?.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Uno o más campos no fueron completados.","ERROR",JOptionPane.ERROR_MESSAGE)
+                    camposEntrada = emptyArray()
+                    break
+                }
+            }
+        }
 
         return camposEntrada
     }

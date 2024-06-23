@@ -1,5 +1,6 @@
 import java.awt.BorderLayout
 import java.awt.Dimension
+import java.awt.Label
 import javax.swing.*
 
 abstract class Ventana {
@@ -12,7 +13,7 @@ abstract class Ventana {
         this.columnas = nombresColumnas
     }
 
-
+    //Ventanas que son empleadas tanto para el CRUD de diseñador como de ropa.
     fun crearVentanaPrincipal(nombreVentana:String, datos: Array<Array<String>>):Int{
 
         tabla = JTable(datos, columnas)
@@ -34,6 +35,15 @@ abstract class Ventana {
         )
     }
     fun crearVentanaActualizar(nombreVentana: String):Int{
+        var areaMensaje = JPanel()
+        areaMensaje.setLayout(BoxLayout(areaMensaje, BoxLayout.X_AXIS))
+        var mensaje = JLabel("Puedes alterar cualquier celda. Pulsa ENTER una vez terminado, y ACTUALIZA.")
+        areaMensaje.add(mensaje)
+        panelGeneral.add(areaMensaje, BorderLayout.NORTH)
+
+        panelGeneral.revalidate()
+        panelGeneral.repaint()
+
         return JOptionPane.showOptionDialog(
             null,
             panelGeneral,
@@ -46,6 +56,15 @@ abstract class Ventana {
         )
     }
     fun crearVentanaCrearEliminar(nombreVentana: String):Int{
+        var areaMensaje = JPanel()
+        areaMensaje.setLayout(BoxLayout(areaMensaje, BoxLayout.X_AXIS))
+        var mensaje = JLabel("Selecciona una fila, y ELIMINA.")
+        areaMensaje.add(mensaje)
+        panelGeneral.add(areaMensaje, BorderLayout.NORTH)
+
+        panelGeneral.revalidate()
+        panelGeneral.repaint()
+
         return JOptionPane.showOptionDialog(
             null,
             panelGeneral,
@@ -57,6 +76,8 @@ abstract class Ventana {
             null
         )
     }
+
+
     fun retornarFilaSeleccionadaTabla():Int{
         return tabla.selectedRow
     }

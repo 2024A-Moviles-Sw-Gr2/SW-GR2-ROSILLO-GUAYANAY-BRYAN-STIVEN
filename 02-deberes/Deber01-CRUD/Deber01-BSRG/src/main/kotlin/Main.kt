@@ -26,33 +26,36 @@ fun main(){
                         //Crear Diseñador
                         (0)->{
                             var resultado = ventanaDiseniador.crearVentanaCrear()
-                            var diseniador = Diseniador(
-                                resultado[0]?.getText().toString(),
-                                resultado[1]?.getText().toString().toLong(),
-                                resultado[2]?.getText().toString().toInt(),
-                                resultado[3]?.getText().toBoolean()
-                            )
 
-                            var formatoFecha = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ROOT)
+                            if(resultado.isNotEmpty()){
+                                var diseniador = Diseniador(
+                                    resultado[0]?.getText().toString(),
+                                    resultado[1]?.getText().toString().toLong(),
+                                    resultado[2]?.getText().toString().toInt(),
+                                    resultado[3]?.getText().toBoolean()
+                                )
+
+                                var formatoFecha = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ROOT)
 
 
-                            var registrosRopa = Ropa.obtenerRegistroRopa()
-                            for(i in 0..resultado[4]?.getText().toString().length-1){
-                                for(j in 0..registrosRopa.size-1){
-                                    if(resultado[4]?.getText().toString()[i].toString().toInt() == j){
-                                        var ropa = Ropa(
-                                            registrosRopa[j][0].replace("\n",""),
-                                            registrosRopa[j][1].toFloat(),
-                                            registrosRopa[j][2].toBoolean(),
-                                            formatoFecha.parse(registrosRopa[j][3]),
-                                            registrosRopa[j][4].toInt()
-                                        )
-                                        diseniador.ropa.add(ropa)
+                                var registrosRopa = Ropa.obtenerRegistroRopa()
+                                for(i in 0..resultado[4]?.getText().toString().length-1){
+                                    for(j in 0..registrosRopa.size-1){
+                                        if(resultado[4]?.getText().toString()[i].toString().toInt() == j){
+                                            var ropa = Ropa(
+                                                registrosRopa[j][0].replace("\n",""),
+                                                registrosRopa[j][1].toFloat(),
+                                                registrosRopa[j][2].toBoolean(),
+                                                formatoFecha.parse(registrosRopa[j][3]),
+                                                registrosRopa[j][4].toInt()
+                                            )
+                                            diseniador.ropa.add(ropa)
+                                        }
                                     }
                                 }
-                            }
 
-                            Diseniador.agregarRegistroDiseniador(diseniador)
+                                Diseniador.agregarRegistroDiseniador(diseniador)
+                            }
 
                         }
 
@@ -98,14 +101,15 @@ fun main(){
                         //Crear Ropa
                         (0) -> {
                             var resultado = ventanaRopa.crearVentanaCrear()
-
-                            Ropa.agregarRegistroRopa(Ropa(
-                                resultado[0]?.getText().toString().replace("\n",""),
-                                resultado[1]?.getText().toString().toFloat(),
-                                resultado[2]?.getText().toString().toBoolean(),
-                                Date(resultado[3]?.getText().toString()),
-                                resultado[4]?.getText().toString().toInt()
-                            ))
+                            if(resultado.isNotEmpty()){
+                                Ropa.agregarRegistroRopa(Ropa(
+                                    resultado[0]?.getText().toString().replace("\n",""),
+                                    resultado[1]?.getText().toString().toFloat(),
+                                    resultado[2]?.getText().toString().toBoolean(),
+                                    Date(resultado[3]?.getText().toString()),
+                                    resultado[4]?.getText().toString().toInt()
+                                ))
+                            }
 
                         }
 
