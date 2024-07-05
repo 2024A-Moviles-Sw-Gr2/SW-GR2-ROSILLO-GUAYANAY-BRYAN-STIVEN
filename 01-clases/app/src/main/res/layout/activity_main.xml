@@ -26,38 +26,40 @@
         android:id="@+id/btn_ciclo_vida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="100dp"
         android:text="C. Vida"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="161dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="159dp" />
 
     <Button
         android:id="@+id/btn_ir_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="32dp"
         android:text="ListView"
         app:layout_constraintTop_toBottomOf="@+id/btn_ciclo_vida"
-        tools:layout_editor_absoluteX="159dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="154dp" />
 
     <Button
         android:id="@+id/btn_ir_intent_explicito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="I. Explicito"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="384dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_list_view"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp" />
 
     <Button
         android:id="@+id/btn_ir_intent_implicito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="I. Implicito"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="438dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_explicito"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
