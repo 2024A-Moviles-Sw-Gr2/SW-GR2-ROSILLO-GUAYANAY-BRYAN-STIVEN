@@ -62,4 +62,14 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp" />
 
+    <Button
+        android:id="@+id/btn_sqlite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Sqlite"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_implicito"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
