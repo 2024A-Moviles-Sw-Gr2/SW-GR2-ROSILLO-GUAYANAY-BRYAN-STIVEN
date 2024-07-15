@@ -8,13 +8,14 @@ class Diseniador(
     var valorMercado:Long,
     var numeroColecciones:Int,
     var creadorUnisex:Boolean,
+    var ropa: Array<String>
 ):Parcelable{
-
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readLong(),
         parcel.readInt(),
-        parcel.readByte() != 0.toByte()
+        parcel.readByte() != 0.toByte(),
+        parcel.createStringArray()!!
     ) {
     }
 
@@ -23,6 +24,7 @@ class Diseniador(
         parcel.writeLong(valorMercado)
         parcel.writeInt(numeroColecciones)
         parcel.writeByte(if (creadorUnisex) 1 else 0)
+        parcel.writeStringArray(ropa)
     }
 
     override fun describeContents(): Int {
@@ -38,5 +40,6 @@ class Diseniador(
             return arrayOfNulls(size)
         }
     }
+
 
 }
