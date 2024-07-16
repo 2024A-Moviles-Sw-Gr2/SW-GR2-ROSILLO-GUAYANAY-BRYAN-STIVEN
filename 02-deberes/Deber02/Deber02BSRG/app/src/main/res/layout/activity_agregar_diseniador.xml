@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ly_agregarDiseniador"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgregarDiseniador">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Diseñador"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <EditText
+        android:id="@+id/txt_nombreDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Nombre"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/txt_valorMercadoDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Valor de mercado"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreDiseniador"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/txt_coleccionesDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Núm. Colecciones"
+        app:layout_constraintTop_toBottomOf="@+id/txt_valorMercadoDiseniador"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/txt_unisexDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="¿Creador unisex?"
+        app:layout_constraintTop_toBottomOf="@+id/txt_coleccionesDiseniador"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/txt_ropaDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Lista - Ropa"
+        app:layout_constraintTop_toBottomOf="@+id/txt_unisexDiseniador"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <Button
+        android:id="@+id/btn_agregarDiseniador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

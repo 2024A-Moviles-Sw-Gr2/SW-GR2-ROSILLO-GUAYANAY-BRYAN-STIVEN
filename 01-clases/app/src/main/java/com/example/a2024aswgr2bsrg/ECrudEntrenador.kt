@@ -83,9 +83,6 @@ class ECrudEntrenador : AppCompatActivity() {
             if (respuesta) mostrarSnackBar("Entr. Eliminado")
         }
 
-
-
-
     }
 
 
