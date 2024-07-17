@@ -27,6 +27,11 @@ class Diseniador(
         parcel.writeStringArray(ropa)
     }
 
+    override fun toString(): String {
+        val toStringDiseniador = "$nombre\nValor de mercado: $valorMercado $\nColecciones: $numeroColecciones | Unisex: $creadorUnisex"
+        return toStringDiseniador
+    }
+
     override fun describeContents(): Int {
         return 0
     }
@@ -40,6 +45,8 @@ class Diseniador(
             return arrayOfNulls(size)
         }
     }
+
+
 
 
 }

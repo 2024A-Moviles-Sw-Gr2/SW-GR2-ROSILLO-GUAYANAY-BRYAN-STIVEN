@@ -1,5 +1,6 @@
 package com.example.deber02_bsrg
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,7 +26,7 @@ class AgregarDiseniador : AppCompatActivity() {
                 esUnisex,
                 ropa
             )
-            mostrarSnackbar("Diseñador creado con Éxito")
+            devolverRespuesta()
         }
     }
 
@@ -33,12 +34,10 @@ class AgregarDiseniador : AppCompatActivity() {
         return cadena.split(",").map { it.trim() }.toTypedArray()
     }
 
-    fun mostrarSnackbar(texto:String){
-        val snack = Snackbar.make(
-            findViewById(R.id.ly_agregarDiseniador),
-            texto,
-            Snackbar.LENGTH_INDEFINITE
-        )
-        snack.show()
+    fun devolverRespuesta(){
+        val intentDevolverRespuesta = Intent()
+        setResult(RESULT_OK, intentDevolverRespuesta)
+        finish()
     }
+
 }

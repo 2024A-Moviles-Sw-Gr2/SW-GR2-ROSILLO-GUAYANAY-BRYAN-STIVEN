@@ -21,8 +21,9 @@ class BaseDatosDiseniador {
             return arregloDiseniador.find { diseniador -> diseniador.nombre.equals(nombre) }
         }
 
-        fun eliminarDiseniador(nombre: String){
-            arregloDiseniador.removeIf { diseniador -> diseniador.nombre.equals("nombre") }
+        fun eliminarDiseniador(posicion: Int){
+            arregloDiseniador.removeAt(posicion)
+            //arregloDiseniador.removeIf { diseniador -> diseniador.nombre.equals("nombre") }
         }
 
         fun actualizarDiseniador(
@@ -39,6 +40,7 @@ class BaseDatosDiseniador {
                 }.toMutableList() as ArrayList<Diseniador>
             }
         }
+
     }
 
 }

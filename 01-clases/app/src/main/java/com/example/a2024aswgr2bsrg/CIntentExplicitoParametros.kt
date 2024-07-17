@@ -18,8 +18,6 @@ class CIntentExplicitoParametros : AppCompatActivity() {
         val entrenador = intent.getParcelableExtra<BEntrenador>("entrenador")
         val boton = findViewById<Button>(R.id.btn_devolver_respuesta)
         boton.setOnClickListener{devolverRespuesta()}
-
-
     }
 
     private fun devolverRespuesta() {
