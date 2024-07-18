@@ -58,13 +58,6 @@ class Crud_Diseniador : AppCompatActivity() {
         registerForContextMenu(listView)
     }
 
-    fun irActividad(
-        clase: Class<*>
-    ){
-        val intent = Intent(this,clase)
-        startActivity(intent)
-    }
-
     var posicionItemSeleccionado = -1
 
     override fun onCreateContextMenu(

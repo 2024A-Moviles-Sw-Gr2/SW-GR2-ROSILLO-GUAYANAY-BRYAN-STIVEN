@@ -44,4 +44,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="132dp" />
 
+    <Button
+        android:id="@+id/btn_irCrudRopa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Ropa"
+        app:layout_constraintTop_toBottomOf="@+id/btn_iniciar"
+        tools:layout_editor_absoluteX="160dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

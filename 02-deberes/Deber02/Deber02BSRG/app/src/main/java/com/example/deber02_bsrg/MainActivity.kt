@@ -15,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         botonInicio.setOnClickListener {
             irActividad(Crud_Diseniador::class.java)
         }
+
+        val botonIrCrudRopa = findViewById<Button>(R.id.btn_irCrudRopa)
+        botonIrCrudRopa.setOnClickListener {
+            irActividad(Crud_Ropa::class.java)
+        }
     }
 
     fun irActividad(

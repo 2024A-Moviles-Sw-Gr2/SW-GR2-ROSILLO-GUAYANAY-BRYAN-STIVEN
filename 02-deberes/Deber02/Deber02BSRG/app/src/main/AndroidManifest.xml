@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Deber02BSRG"
         tools:targetApi="31">
         <activity
+            android:name=".Crud_Ropa"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarRopa"
+            android:exported="false" />
+        <activity
             android:name=".EditarDiseniador"
             android:exported="false" />
         <activity
