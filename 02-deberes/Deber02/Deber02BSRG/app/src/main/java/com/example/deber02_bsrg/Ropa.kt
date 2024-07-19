@@ -37,7 +37,7 @@ class Ropa(
     }
 
     override fun toString(): String {
-        val toStringRopa = "$nombre\nPrecio: $precio | ¿En tendencia?: $tendencia\nLanzamiento: ${lanzamiento.toString()} | Años vida útil: $aniosVidaUtil"
+        val toStringRopa = "$nombre\nPrecio: $precio$ | ¿En tendencia?: $tendencia\nLanzamiento: ${lanzamiento.toString()} | Años vida útil: $aniosVidaUtil"
         return toStringRopa
     }
 

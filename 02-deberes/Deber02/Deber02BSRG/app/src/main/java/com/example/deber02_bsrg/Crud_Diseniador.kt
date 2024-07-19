@@ -28,7 +28,7 @@ class Crud_Diseniador : AppCompatActivity() {
             if(result.resultCode == Activity.RESULT_OK){
                 if(result.data != null){
                     adaptadorGlobal.notifyDataSetChanged()
-                    mostrarSnackBar("Diseñador Creado")
+                    mostrarSnackBar("Operación exitosa")
                 }
             }
         }

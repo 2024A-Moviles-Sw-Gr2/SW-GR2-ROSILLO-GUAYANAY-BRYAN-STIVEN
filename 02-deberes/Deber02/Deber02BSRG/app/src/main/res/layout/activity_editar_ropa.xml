@@ -2,100 +2,88 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ly_agregarDiseniador"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgregarDiseniador">
+    tools:context=".EditarRopa">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Agregar Diseñador"
+        android:layout_marginTop="44dp"
+        android:text="Editar Ropa"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_nombreDiseniador"
+        android:id="@+id/txt_nombreRopaActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="text"
         android:text="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/txt_valorMercadoDiseniador"
+        android:id="@+id/txt_precioRopaActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Valor de mercado"
+        android:text="Precio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombreDiseniador" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreRopaActualizar" />
 
     <EditText
-        android:id="@+id/txt_coleccionesDiseniador"
+        android:id="@+id/txt_tendenciaRopaActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Núm. Colecciones"
+        android:text="¿Está en tendencia?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_valorMercadoDiseniador" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_precioRopaActualizar" />
 
     <EditText
-        android:id="@+id/txt_unisexDiseniador"
+        android:id="@+id/txt_lanzamientoRopaActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="text"
-        android:text="¿Creador unisex?"
+        android:text="Fecha lanzamiento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_coleccionesDiseniador" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_tendenciaRopaActualizar" />
 
     <EditText
-        android:id="@+id/txt_indicesRopaDiseniador"
+        android:id="@+id/txt_vidaUtilRopaActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Indices de ropa"
+        android:text="Años de vida útil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv_ropaParaAgregarDiseniador" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_lanzamientoRopaActualizar" />
 
     <Button
-        android:id="@+id/btn_agregarDiseniador"
+        android:id="@+id/btn_actualizarRopa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Agregar"
+        android:layout_marginTop="56dp"
+        android:text="Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_indicesRopaDiseniador" />
-
-    <ListView
-        android:id="@+id/lv_ropaParaAgregarDiseniador"
-        android:layout_width="415dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/txt_unisexDiseniador"
-        tools:layout_editor_absoluteX="-2dp" />
-
+        app:layout_constraintTop_toBottomOf="@+id/txt_vidaUtilRopaActualizar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

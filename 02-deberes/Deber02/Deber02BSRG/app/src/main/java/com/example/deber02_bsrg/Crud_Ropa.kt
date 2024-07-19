@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.ContextMenu
+import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -23,7 +27,7 @@ class Crud_Ropa : AppCompatActivity() {
                 result->
             if(result.resultCode == Activity.RESULT_OK){
                 adaptadorGlobal.notifyDataSetChanged()
-                mostrarSnackBar("Ropa Creada")
+                mostrarSnackBar("Operación exitosa")
             }
         }
 
@@ -47,6 +51,41 @@ class Crud_Ropa : AppCompatActivity() {
         botonIrAgregarRopa.setOnClickListener {
             val intentExplicito = Intent(this, AgregarRopa::class.java)
             callbackContenidoIntentExplicito.launch(intentExplicito)
+        }
+
+        registerForContextMenu(listView)
+    }
+
+    var posicionItemSeleccionado = -1
+
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ){
+        super.onCreateContextMenu(menu,v,menuInfo)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu02, menu)
+
+        val info = menuInfo as AdapterView.AdapterContextMenuInfo
+        val posicion = info.position
+        posicionItemSeleccionado = posicion
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.m_borrarRopa -> {
+                BaseDatosRopa.eliminarRopa(posicionItemSeleccionado)
+                adaptadorGlobal.notifyDataSetChanged()
+                return true
+            }
+            R.id.m_editarRopa->{
+                val intent = Intent(this,EditarRopa::class.java)
+                intent.putExtra("posicionRopa", posicionItemSeleccionado)
+                callbackContenidoIntentExplicito.launch(intent)
+                return true
+            }
+            else -> super.onContextItemSelected(item)
         }
     }
 

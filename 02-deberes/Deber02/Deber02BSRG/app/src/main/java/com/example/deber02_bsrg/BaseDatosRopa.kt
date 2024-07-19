@@ -18,5 +18,9 @@ class BaseDatosRopa {
             arregloRopa.add(ropa)
         }
 
+        fun eliminarRopa(posicion: Int) {
+            arregloRopa.removeAt(posicion)
+        }
+
     }
 }

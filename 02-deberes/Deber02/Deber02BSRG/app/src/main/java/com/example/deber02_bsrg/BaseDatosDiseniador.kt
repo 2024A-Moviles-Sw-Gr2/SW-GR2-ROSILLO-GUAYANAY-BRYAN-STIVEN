@@ -10,7 +10,7 @@ class BaseDatosDiseniador {
             valorMercado:Long,
             numeroColecciones:Int,
             creadorUnisex:Boolean,
-            ropa: Array<String>
+            ropa: Array<Int>
         ){
             val diseniador = Diseniador(nombre,valorMercado,numeroColecciones,creadorUnisex,ropa)
             arregloDiseniador.add(diseniador)
@@ -23,9 +23,9 @@ class BaseDatosDiseniador {
 
         fun eliminarDiseniador(posicion: Int){
             arregloDiseniador.removeAt(posicion)
-            //arregloDiseniador.removeIf { diseniador -> diseniador.nombre.equals("nombre") }
         }
 
+        /*
         fun actualizarDiseniador(
             nombre:String,
             valorMercado:Long,
@@ -40,6 +40,8 @@ class BaseDatosDiseniador {
                 }.toMutableList() as ArrayList<Diseniador>
             }
         }
+
+         */
 
     }
 
