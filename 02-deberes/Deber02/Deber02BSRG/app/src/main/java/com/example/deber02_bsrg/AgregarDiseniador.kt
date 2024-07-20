@@ -35,15 +35,20 @@ class AgregarDiseniador : AppCompatActivity() {
 
             val indices = indicesRopa.map {
                 it.toInt()-1
-            }.toTypedArray()
+            }
 
             BaseDatosDiseniador.agregarDiseniador(
                 nombre,
                 valorMercado,
                 colecciones,
-                esUnisex,
-                indices
+                esUnisex
             )
+
+            indices.forEach {
+                BaseDatosDiseniador.arregloDiseniador.last().ropa.add(BaseDatosRopa.arregloRopa[it])
+            }
+
+
             devolverRespuesta()
         }
     }

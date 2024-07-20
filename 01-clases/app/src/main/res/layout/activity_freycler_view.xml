@@ -10,8 +10,11 @@
         android:id="@+id/rv_entrenadores"
         android:layout_width="304dp"
         android:layout_height="428dp"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="151dp" />
+        android:layout_marginBottom="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_total_likes"
@@ -20,6 +23,9 @@
         android:layout_marginBottom="40dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/rv_entrenadores"
-        app:layout_constraintEnd_toEndOf="@+id/rv_entrenadores"
-        app:layout_constraintStart_toStartOf="@+id/rv_entrenadores" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702" />
 </androidx.constraintlayout.widget.ConstraintLayout>

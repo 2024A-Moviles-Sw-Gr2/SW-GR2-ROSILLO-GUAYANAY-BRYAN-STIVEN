@@ -11,6 +11,7 @@ class FReyclerView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_freycler_view)
+        inicializarRecyclerView()
     }
 
     fun inicializarRecyclerView(){

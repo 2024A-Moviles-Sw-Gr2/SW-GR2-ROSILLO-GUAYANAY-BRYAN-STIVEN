@@ -5,11 +5,11 @@ class Diseniador(
     var valorMercado:Long,
     var numeroColecciones:Int,
     var creadorUnisex:Boolean,
-    var ropa: Array<Int>
 ){
+    var ropa = ArrayList<Ropa>()
 
     override fun toString(): String {
-        val toStringDiseniador = "$nombre\nValor de mercado: $valorMercado $\nColecciones: $numeroColecciones | Unisex: $creadorUnisex"
+        val toStringDiseniador = "$nombre\nValor de mercado: $valorMercado $\nColecciones: $numeroColecciones | Unisex: $creadorUnisex\n"
         return toStringDiseniador
     }
 

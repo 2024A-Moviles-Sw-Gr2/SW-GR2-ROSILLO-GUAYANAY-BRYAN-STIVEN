@@ -5,6 +5,7 @@
     android:id="@+id/ly_agregarRopa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EFC2B4"
     tools:context=".AgregarRopa">
 
     <TextView
@@ -14,8 +15,9 @@
         android:layout_marginTop="52dp"
         android:text="Agregar Ropa"
         android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="105dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txt_nombreRopa"
@@ -25,8 +27,9 @@
         android:ems="10"
         android:inputType="text"
         android:text="Nombre"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/txt_precioRopa"
@@ -36,8 +39,9 @@
         android:ems="10"
         android:inputType="text"
         android:text="Precio"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombreRopa"
-        tools:layout_editor_absoluteX="98dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreRopa" />
 
     <EditText
         android:id="@+id/txt_tendenciaRopa"
@@ -47,8 +51,9 @@
         android:ems="10"
         android:inputType="text"
         android:text="¿Está en tendencia?"
-        app:layout_constraintTop_toBottomOf="@+id/txt_precioRopa"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_precioRopa" />
 
     <EditText
         android:id="@+id/txt_vidaUtilRopa"
@@ -58,17 +63,20 @@
         android:ems="10"
         android:inputType="text"
         android:text="Años de vida útil"
-        app:layout_constraintTop_toBottomOf="@+id/txt_fechaLanzamientoRopa"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fechaLanzamientoRopa" />
 
     <Button
         android:id="@+id/btn_crearRopa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#0A153A"
         android:text="Agregar"
-        app:layout_constraintTop_toBottomOf="@+id/txt_vidaUtilRopa"
-        tools:layout_editor_absoluteX="156dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_vidaUtilRopa" />
 
     <EditText
         android:id="@+id/txt_fechaLanzamientoRopa"
@@ -78,6 +86,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Fecha lanzamiento"
-        app:layout_constraintTop_toBottomOf="@+id/txt_tendenciaRopa"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_tendenciaRopa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

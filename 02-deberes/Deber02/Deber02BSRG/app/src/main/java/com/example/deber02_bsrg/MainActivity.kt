@@ -10,12 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Evento del boton de inicio
+        //Para ir CRUD DISEÑADOR
         val botonInicio = findViewById<Button>(R.id.btn_iniciar)
         botonInicio.setOnClickListener {
             irActividad(Crud_Diseniador::class.java)
         }
 
+
+        //Para ir a CRUD ROPA
         val botonIrCrudRopa = findViewById<Button>(R.id.btn_irCrudRopa)
         botonIrCrudRopa.setOnClickListener {
             irActividad(Crud_Ropa::class.java)

@@ -9,39 +9,28 @@ class BaseDatosDiseniador {
             nombre:String,
             valorMercado:Long,
             numeroColecciones:Int,
-            creadorUnisex:Boolean,
-            ropa: Array<Int>
+            creadorUnisex:Boolean
         ){
-            val diseniador = Diseniador(nombre,valorMercado,numeroColecciones,creadorUnisex,ropa)
+            val diseniador = Diseniador(nombre,valorMercado,numeroColecciones,creadorUnisex)
             arregloDiseniador.add(diseniador)
         }
 
-
-        fun buscarDiseniador(nombre:String):Diseniador?{
-            return arregloDiseniador.find { diseniador -> diseniador.nombre.equals(nombre) }
+        fun actualizarDiseniador(
+            posicion: Int,
+            nombre: String,
+            valorMercado: Long,
+            colecciones: Int,
+            esUnisex: Boolean
+        ){
+            arregloDiseniador[posicion].nombre = nombre
+            arregloDiseniador[posicion].valorMercado = valorMercado
+            arregloDiseniador[posicion].numeroColecciones = colecciones
+            arregloDiseniador[posicion].creadorUnisex = esUnisex
         }
 
         fun eliminarDiseniador(posicion: Int){
             arregloDiseniador.removeAt(posicion)
         }
-
-        /*
-        fun actualizarDiseniador(
-            nombre:String,
-            valorMercado:Long,
-            numeroColecciones:Int,
-            creadorUnisex:Boolean,
-            ropa: Array<String>
-        ){
-            if(this.buscarDiseniador(nombre)!= null){
-                val nuevoDiseniador = Diseniador(nombre,valorMercado,numeroColecciones,creadorUnisex,ropa)
-                arregloDiseniador = arregloDiseniador.map {
-                    if(it.nombre.equals(nombre)) nuevoDiseniador else it
-                }.toMutableList() as ArrayList<Diseniador>
-            }
-        }
-
-         */
 
     }
 

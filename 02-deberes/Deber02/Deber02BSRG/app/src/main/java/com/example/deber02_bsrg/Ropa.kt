@@ -10,46 +10,25 @@ class Ropa(
     var tendencia:Boolean,
     var lanzamiento: LocalDate,
     var aniosVidaUtil: Int
-):Parcelable{
-    constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readFloat(),
-        parcel.readByte() != 0.toByte(),
-        LocalDate.ofEpochDay(parcel.readLong()),
-        parcel.readInt()
-    ) {
-    }
-
-
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(nombre)
-        parcel.writeFloat(precio)
-        parcel.writeByte(if (tendencia) 1 else 0)
-        parcel.writeLong(lanzamiento.toEpochDay())
-        parcel.writeInt(aniosVidaUtil)
-    }
-
-
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
+){
     override fun toString(): String {
-        val toStringRopa = "$nombre\nPrecio: $precio$ | ¿En tendencia?: $tendencia\nLanzamiento: ${lanzamiento.toString()} | Años vida útil: $aniosVidaUtil"
+        val toStringRopa = "$nombre\nPrecio: $precio$ | ¿En tendencia?: $tendencia\nLanzamiento: ${lanzamiento.toString()} | Años vida útil: $aniosVidaUtil\n"
         return toStringRopa
     }
 
-    companion object CREATOR : Parcelable.Creator<Ropa> {
-        override fun createFromParcel(parcel: Parcel): Ropa {
-            return Ropa(parcel)
-        }
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
 
-        override fun newArray(size: Int): Array<Ropa?> {
-            return arrayOfNulls(size)
-        }
+        other as Ropa
+
+        if (nombre != other.nombre) return false
+        if (precio != other.precio) return false
+        if (tendencia != other.tendencia) return false
+        if (lanzamiento != other.lanzamiento) return false
+        if (aniosVidaUtil != other.aniosVidaUtil) return false
+
+        return true
     }
-
 
 }

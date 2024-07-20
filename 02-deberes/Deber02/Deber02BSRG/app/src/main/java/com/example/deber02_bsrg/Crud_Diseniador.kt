@@ -81,6 +81,19 @@ class Crud_Diseniador : AppCompatActivity() {
                 adaptadorGlobal.notifyDataSetChanged()
                 return true
             }
+            R.id.m_editarDiseniador->{
+                val intent = Intent(this,EditarDiseniador::class.java)
+                intent.putExtra("posicionDiseniador", posicionItemSeleccionado)
+                callbackContenidoIntentExplicito.launch(intent)
+                return true
+            }
+            R.id.m_verRopa->{
+                val intent = Intent(this, Crud_Ropa::class.java)
+                intent.putExtra("posicionDiseniador",posicionItemSeleccionado)
+                intent.putExtra("nombreDiseniador", BaseDatosDiseniador.arregloDiseniador[posicionItemSeleccionado].nombre)
+                startActivity(intent)
+                return true
+            }
             else -> super.onContextItemSelected(item)
         }
     }

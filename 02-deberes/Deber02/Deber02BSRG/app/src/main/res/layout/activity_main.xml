@@ -26,10 +26,11 @@
 
     <Button
         android:id="@+id/btn_iniciar"
-        android:layout_width="150dp"
-        android:layout_height="69dp"
+        android:layout_width="191dp"
+        android:layout_height="70dp"
         android:layout_marginTop="68dp"
-        android:text="INICIAR"
+        android:backgroundTint="#4CAF50"
+        android:text="CRUD DISEÑADOR"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,11 +49,14 @@
 
     <Button
         android:id="@+id/btn_irCrudRopa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Ropa"
-        app:layout_constraintTop_toBottomOf="@+id/btn_iniciar"
-        tools:layout_editor_absoluteX="160dp" />
+        android:layout_width="176dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#F44336"
+        android:text="CRUD ROPA"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_iniciar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

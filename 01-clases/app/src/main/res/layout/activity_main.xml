@@ -20,17 +20,18 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <Button
         android:id="@+id/btn_ciclo_vida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="48dp"
         android:text="C. Vida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="159dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_ir_list_view"
@@ -38,9 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="ListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ciclo_vida"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="154dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_ir_intent_explicito"
@@ -48,9 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="I. Explicito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ir_list_view"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="148dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_ir_intent_implicito"
@@ -58,9 +61,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="I. Implicito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_explicito"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="148dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_sqlite"
@@ -68,8 +72,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Sqlite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_implicito"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="161dp" />
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R. View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="585dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

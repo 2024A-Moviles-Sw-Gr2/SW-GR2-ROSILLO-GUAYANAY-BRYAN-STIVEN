@@ -18,6 +18,7 @@ class AgregarRopa : AppCompatActivity() {
 
         val botonCrearRopa = findViewById<Button>(R.id.btn_crearRopa)
         botonCrearRopa.setOnClickListener {
+            //Recuperamos los datos
             val nombre = findViewById<EditText>(R.id.txt_nombreRopa).text.toString()
             val precio = findViewById<EditText>(R.id.txt_precioRopa).text.toString().toFloat()
             val tendencia = findViewById<EditText>(R.id.txt_tendenciaRopa).text.toString().toBoolean()
@@ -25,6 +26,7 @@ class AgregarRopa : AppCompatActivity() {
             val fechaLanzamiento = LocalDate.of(arregloFechaLanzamiento[2].toInt(),arregloFechaLanzamiento[1].toInt(),arregloFechaLanzamiento[0].toInt())
             val vidaUtil = findViewById<EditText>(R.id.txt_vidaUtilRopa).text.toString().toInt()
 
+            //Agregamos a la lista global de ropa
             BaseDatosRopa.agregarRopa(
                 nombre,
                 precio,
@@ -32,6 +34,14 @@ class AgregarRopa : AppCompatActivity() {
                 fechaLanzamiento,
                 vidaUtil
             )
+
+            //Agregamos la última ropa agregada al diseñador en caso de que exista.
+            val indiceDiseniador = intent.getIntExtra("posicionDiseniador", -1)
+            if(indiceDiseniador!=-1){
+                BaseDatosDiseniador.arregloDiseniador[indiceDiseniador].ropa.add(BaseDatosRopa.arregloRopa.last())
+            }
+
+            //Devolvemos una respuesta exitosa.
             devolverRespuesta()
 
         }

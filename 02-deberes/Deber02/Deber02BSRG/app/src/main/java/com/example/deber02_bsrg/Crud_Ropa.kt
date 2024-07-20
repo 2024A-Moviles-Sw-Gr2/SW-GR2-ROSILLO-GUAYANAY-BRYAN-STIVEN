@@ -13,13 +13,16 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 
 class Crud_Ropa : AppCompatActivity() {
 
+    //Adaptador que sirve para ir refrescando la lista de ropa.
     lateinit var adaptadorGlobal:ArrayAdapter<Ropa>
 
+    //Utilizado para emitir un mensaje cuando el resultado fue exitoso.
     val callbackContenidoIntentExplicito =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -35,27 +38,45 @@ class Crud_Ropa : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_ropa)
 
+        //Cambiamos la etiqueta por el nombre del diseñador en caso de que exista uno.
+        val nombreDiseñador = intent.getStringExtra("nombreDiseniador")
+        if(nombreDiseñador!=null){
+            findViewById<TextView>(R.id.txt_nombreAux).setText("DISEÑADOR: $nombreDiseñador")
+        }
+
+        //Agregamos los registros a la lista.
         val listView = findViewById<ListView>(R.id.lv_ropa)
+        val indiceDiseniador = intent.getIntExtra("posicionDiseniador", -1)
+        val listaRopa:ArrayList<Ropa>
+
+        if(indiceDiseniador!=-1){
+            listaRopa = BaseDatosDiseniador.arregloDiseniador[indiceDiseniador].ropa
+        }else{
+            listaRopa = BaseDatosRopa.arregloRopa
+        }
 
         val adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            BaseDatosRopa.arregloRopa
+            listaRopa
         )
 
         listView.adapter = adaptador
         adaptadorGlobal = adaptador
         adaptador.notifyDataSetChanged()
 
+        //Para ir a agregar ropa.
         val botonIrAgregarRopa = findViewById<Button>(R.id.btn_irAgregarRopa)
         botonIrAgregarRopa.setOnClickListener {
             val intentExplicito = Intent(this, AgregarRopa::class.java)
+            intentExplicito.putExtra("posicionDiseniador",indiceDiseniador)
             callbackContenidoIntentExplicito.launch(intentExplicito)
         }
 
         registerForContextMenu(listView)
     }
 
+    //Para mostrar el menú flotante
     var posicionItemSeleccionado = -1
 
     override fun onCreateContextMenu(
@@ -72,17 +93,26 @@ class Crud_Ropa : AppCompatActivity() {
         posicionItemSeleccionado = posicion
     }
 
+    //Acciones para cada item del menú flotante
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.m_borrarRopa -> {
-                BaseDatosRopa.eliminarRopa(posicionItemSeleccionado)
+                val indiceDiseniador = intent.getIntExtra("posicionDiseniador", -1)
+
+                if(indiceDiseniador!=-1){
+                    BaseDatosDiseniador.arregloDiseniador[indiceDiseniador].ropa.removeAt(posicionItemSeleccionado)
+                }else{
+                    BaseDatosRopa.eliminarRopa(posicionItemSeleccionado)
+                }
                 adaptadorGlobal.notifyDataSetChanged()
+
                 return true
             }
             R.id.m_editarRopa->{
-                val intent = Intent(this,EditarRopa::class.java)
-                intent.putExtra("posicionRopa", posicionItemSeleccionado)
-                callbackContenidoIntentExplicito.launch(intent)
+                val intentE = Intent(this,EditarRopa::class.java)
+                intentE.putExtra("posicionRopa", posicionItemSeleccionado)
+                intentE.putExtra("posicionDiseniador", intent.getIntExtra("posicionDiseniador", -1))
+                callbackContenidoIntentExplicito.launch(intentE)
                 return true
             }
             else -> super.onContextItemSelected(item)
