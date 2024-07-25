@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewAdaptador(
+class RecyclerViewAdaptadorPeliculas(
     private val contexto: MainActivity,
     private val lista: ArrayList<Pelicula>,
     private val recyclerView: RecyclerView
-):RecyclerView.Adapter<RecyclerViewAdaptador.MyViewHolder>(){
+):RecyclerView.Adapter<RecyclerViewAdaptadorPeliculas.MyViewHolder>(){
 
     inner class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
         val nombrePelicula: TextView
@@ -25,7 +25,7 @@ class RecyclerViewAdaptador(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.recycler_view_vista, parent, false
+            R.layout.recycler_view_vista_peliculas, parent, false
         )
         return MyViewHolder(itemView)
     }

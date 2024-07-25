@@ -1,7 +1,6 @@
 package com.example.deber03bsrg
 
 class BaseDatosPeliculas {
-
     companion object{
         val listaPeliculas = ArrayList<Pelicula>()
         fun inicializarPeliculas(){
