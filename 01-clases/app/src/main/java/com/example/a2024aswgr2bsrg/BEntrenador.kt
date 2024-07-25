@@ -3,7 +3,7 @@ package com.example.a2024aswgr2bsrg
 import android.os.Parcel
 import android.os.Parcelable
 
-class BEntrenador(
+class   BEntrenador(
     var id:Int,
     var nombre:String,
     var descripcion:String?
