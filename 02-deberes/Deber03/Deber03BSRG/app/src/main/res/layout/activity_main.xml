@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1E1E"
-    tools:context=".MainActivity">
+    tools:context=".vista.MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -67,15 +67,35 @@
         android:layout_height="73dp"
         android:background="#000000"
         android:backgroundTint="#000000"
+        android:padding="25px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/b" />
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start|center_horizontal|center_vertical"
+            android:layout_marginLeft="30px"
+            app:srcCompat="@drawable/z" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="39dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center|center_horizontal|center_vertical"
+            android:backgroundTint="#717070"
+            app:srcCompat="@drawable/x" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="44dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal|center_vertical|end"
+            android:layout_marginRight="30px"
+            android:backgroundTint="#717070"
+            app:srcCompat="@drawable/y" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

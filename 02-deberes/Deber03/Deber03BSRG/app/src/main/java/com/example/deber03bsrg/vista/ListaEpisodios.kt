@@ -1,9 +1,12 @@
-package com.example.deber03bsrg
+package com.example.deber03bsrg.vista
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deber03bsrg.R
+import com.example.deber03bsrg.vista.recycler.RecyclerViewAdaptadorEpisodios
+import com.example.deber03bsrg.baseDeDatos.BaseDatosEpisodios
 
 class ListaEpisodios : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

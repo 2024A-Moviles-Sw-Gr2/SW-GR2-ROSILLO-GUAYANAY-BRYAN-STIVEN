@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Deber03BSRG"
         tools:targetApi="31">
         <activity
-            android:name=".ListaEpisodios"
+            android:name=".vista.ListaEpisodios"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".vista.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

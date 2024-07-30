@@ -12,7 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 class GGoogleMapsActivity : AppCompatActivity() {
     private lateinit var mapa: GoogleMap
     var permisos = false
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ggoogle_maps)

@@ -1,4 +1,4 @@
-package com.example.deber03bsrg
+package com.example.deber03bsrg.entidades
 
 class Pelicula{
 

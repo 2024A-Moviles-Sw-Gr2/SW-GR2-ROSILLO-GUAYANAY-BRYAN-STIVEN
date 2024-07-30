@@ -1,4 +1,6 @@
-package com.example.deber03bsrg
+package com.example.deber03bsrg.baseDeDatos
+
+import com.example.deber03bsrg.entidades.Episodio
 
 class BaseDatosEpisodios {
     companion object{
