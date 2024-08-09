@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "510313960729",
+    "project_id": "crud02-db2",
+    "storage_bucket": "crud02-db2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510313960729:android:b100c82aa7d702759be188",
+        "android_client_info": {
+          "package_name": "com.example.deber02_bsrg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfVu3JLjdICQ8M961ih1rQAbwD-lSMDaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
