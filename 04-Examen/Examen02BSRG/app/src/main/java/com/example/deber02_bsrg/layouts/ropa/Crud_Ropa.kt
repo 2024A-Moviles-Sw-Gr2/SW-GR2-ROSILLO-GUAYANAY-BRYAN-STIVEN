@@ -24,7 +24,6 @@ class Crud_Ropa : AppCompatActivity() {
 
     val tablaRopa = TablaRopa(this)
     var listaRopa:ArrayList<Ropa> = ArrayList<Ropa>()
-    //val id_diseniador = intent.getIntExtra("id_diseniador", -1)
 
     //Adaptador que sirve para ir refrescando la lista de ropa.
     lateinit var adaptadorGlobal:ArrayAdapter<Ropa>
@@ -46,6 +45,7 @@ class Crud_Ropa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_ropa)
+        val listView = findViewById<ListView>(R.id.lv_ropa)
 
         //Cambiamos la etiqueta por el nombre del diseñador en caso de que exista uno.
 
@@ -54,12 +54,8 @@ class Crud_Ropa : AppCompatActivity() {
             findViewById<TextView>(R.id.txt_nombreAux).setText("DISEÑADOR: $nombreDiseniador")
         }
 
+
         val id_diseniador = intent.getIntExtra("id_diseniador", -1)
-
-        //Agregamos los registros a la lista.
-        val listView = findViewById<ListView>(R.id.lv_ropa)
-
-
         actualizarListaElementos(id_diseniador)
 
         //Para ir a agregar ropa.

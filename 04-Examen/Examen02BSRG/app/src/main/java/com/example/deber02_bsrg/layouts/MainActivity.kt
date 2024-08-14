@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.deber02_bsrg.R
-import com.example.deber02_bsrg.baseDatos.SQLiteHelper
-import com.example.deber02_bsrg.baseDatos.ropa.TablaRopa
 import com.example.deber02_bsrg.layouts.diseniador.Crud_Diseniador
 import com.example.deber02_bsrg.layouts.ropa.Crud_Ropa
 

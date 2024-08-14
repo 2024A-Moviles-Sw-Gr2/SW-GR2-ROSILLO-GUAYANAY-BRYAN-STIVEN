@@ -11,4 +11,7 @@
     <item
         android:id="@+id/m_verRopa"
         android:title="Ver ropa" />
+    <item
+        android:id="@+id/m_verUbicacion"
+        android:title="Ver ubicación" />
 </menu>

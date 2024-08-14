@@ -18,6 +18,7 @@ import com.example.deber02_bsrg.layouts.ropa.Crud_Ropa
 import com.example.deber02_bsrg.R
 import com.example.deber02_bsrg.baseDatos.diseniador.TablaDiseniador
 import com.example.deber02_bsrg.entidades.Diseniador
+import com.example.deber02_bsrg.layouts.maps.GoogleMapsActivity
 import com.google.android.material.snackbar.Snackbar
 
 class Crud_Diseniador : AppCompatActivity() {
@@ -44,7 +45,7 @@ class Crud_Diseniador : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_diseniador)
 
-        val listView = findViewById<ListView>(R.id.lv_diseniador)
+
         actualizarListaElementos()
 
         val botonIrAgregar = findViewById<Button>(R.id.btn_irAgregar)
@@ -53,6 +54,7 @@ class Crud_Diseniador : AppCompatActivity() {
             callbackContenidoIntentExplicito.launch(intentExplicito)
         }
 
+        val listView = findViewById<ListView>(R.id.lv_diseniador)
         registerForContextMenu(listView)
     }
 
@@ -60,7 +62,6 @@ class Crud_Diseniador : AppCompatActivity() {
         val listView = findViewById<ListView>(R.id.lv_diseniador)
 
         listaDiseniador = tablaDiseniador.listarDiseniador()
-        //listaDiseniador = BaseDatosDiseniadorSQLite.tablaDiseniador!!.listarDiseniador()
 
         val adaptador = ArrayAdapter(
             this,
@@ -113,6 +114,15 @@ class Crud_Diseniador : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.m_verUbicacion ->{
+                val intent = Intent(this, GoogleMapsActivity::class.java)
+                intent.putExtra("posicionDiseniador",posicionItemSeleccionado)
+                intent.putExtra("nombreDiseniador", tablaDiseniador.listarDiseniador()[posicionItemSeleccionado].nombre)
+                startActivity(intent)
+                return true
+            }
+
+
             else -> super.onContextItemSelected(item)
         }
     }
