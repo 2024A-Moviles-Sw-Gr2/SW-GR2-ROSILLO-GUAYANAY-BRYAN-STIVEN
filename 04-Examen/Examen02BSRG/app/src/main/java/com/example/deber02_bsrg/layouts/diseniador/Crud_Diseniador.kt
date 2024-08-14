@@ -16,13 +16,15 @@ import android.widget.ListView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.deber02_bsrg.layouts.ropa.Crud_Ropa
 import com.example.deber02_bsrg.R
-import com.example.deber02_bsrg.baseDatos.BaseDatosDiseniador
+import com.example.deber02_bsrg.baseDatos.diseniador.TablaDiseniador
 import com.example.deber02_bsrg.entidades.Diseniador
 import com.google.android.material.snackbar.Snackbar
 
 class Crud_Diseniador : AppCompatActivity() {
 
+    var listaDiseniador:ArrayList<Diseniador> = ArrayList<Diseniador>()
     lateinit var adaptadorGlobal:ArrayAdapter<Diseniador>
+    val tablaDiseniador = TablaDiseniador(this)
 
     val callbackContenidoIntentExplicito =
         registerForActivityResult(
@@ -31,6 +33,7 @@ class Crud_Diseniador : AppCompatActivity() {
                 result->
             if(result.resultCode == Activity.RESULT_OK){
                 if(result.data != null){
+                    actualizarListaElementos()
                     adaptadorGlobal.notifyDataSetChanged()
                     mostrarSnackBar("Operación exitosa")
                 }
@@ -42,16 +45,7 @@ class Crud_Diseniador : AppCompatActivity() {
         setContentView(R.layout.activity_crud_diseniador)
 
         val listView = findViewById<ListView>(R.id.lv_diseniador)
-
-        val adaptador = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            BaseDatosDiseniador.arregloDiseniador
-        )
-
-        listView.adapter = adaptador
-        adaptadorGlobal = adaptador
-        adaptador.notifyDataSetChanged()
+        actualizarListaElementos()
 
         val botonIrAgregar = findViewById<Button>(R.id.btn_irAgregar)
         botonIrAgregar.setOnClickListener {
@@ -61,6 +55,24 @@ class Crud_Diseniador : AppCompatActivity() {
 
         registerForContextMenu(listView)
     }
+
+    fun actualizarListaElementos(){
+        val listView = findViewById<ListView>(R.id.lv_diseniador)
+
+        listaDiseniador = tablaDiseniador.listarDiseniador()
+        //listaDiseniador = BaseDatosDiseniadorSQLite.tablaDiseniador!!.listarDiseniador()
+
+        val adaptador = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            listaDiseniador
+        )
+
+        listView.adapter = adaptador
+        adaptadorGlobal = adaptador
+        adaptador.notifyDataSetChanged()
+    }
+
 
     var posicionItemSeleccionado = -1
 
@@ -81,7 +93,10 @@ class Crud_Diseniador : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.m_borrarDiseniador -> {
-                BaseDatosDiseniador.eliminarDiseniador(posicionItemSeleccionado)
+                tablaDiseniador.eliminarDiseniador(
+                    tablaDiseniador.listarDiseniador()[posicionItemSeleccionado].id
+                )
+                actualizarListaElementos()
                 adaptadorGlobal.notifyDataSetChanged()
                 return true
             }
@@ -93,8 +108,8 @@ class Crud_Diseniador : AppCompatActivity() {
             }
             R.id.m_verRopa ->{
                 val intent = Intent(this, Crud_Ropa::class.java)
-                intent.putExtra("posicionDiseniador",posicionItemSeleccionado)
-                intent.putExtra("nombreDiseniador", BaseDatosDiseniador.arregloDiseniador[posicionItemSeleccionado].nombre)
+                intent.putExtra("id_diseniador",tablaDiseniador.listarDiseniador()[posicionItemSeleccionado].id)
+                intent.putExtra("nombreDiseniador", tablaDiseniador.listarDiseniador()[posicionItemSeleccionado].nombre)
                 startActivity(intent)
                 return true
             }

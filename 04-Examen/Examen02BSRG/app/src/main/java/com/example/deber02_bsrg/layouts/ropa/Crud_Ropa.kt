@@ -16,13 +16,15 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.deber02_bsrg.R
-import com.example.deber02_bsrg.baseDatos.BaseDatosDiseniador
-import com.example.deber02_bsrg.baseDatos.ropa.BaseDatosRopa
-import com.example.deber02_bsrg.baseDatos.ropa.BaseDatosRopaSQLite
+import com.example.deber02_bsrg.baseDatos.ropa.TablaRopa
 import com.example.deber02_bsrg.entidades.Ropa
 import com.google.android.material.snackbar.Snackbar
 
 class Crud_Ropa : AppCompatActivity() {
+
+    val tablaRopa = TablaRopa(this)
+    var listaRopa:ArrayList<Ropa> = ArrayList<Ropa>()
+    //val id_diseniador = intent.getIntExtra("id_diseniador", -1)
 
     //Adaptador que sirve para ir refrescando la lista de ropa.
     lateinit var adaptadorGlobal:ArrayAdapter<Ropa>
@@ -34,6 +36,8 @@ class Crud_Ropa : AppCompatActivity() {
         ){
                 result->
             if(result.resultCode == Activity.RESULT_OK){
+                val id_diseniador = intent.getIntExtra("id_diseniador", -1)
+                actualizarListaElementos(id_diseniador)
                 adaptadorGlobal.notifyDataSetChanged()
                 mostrarSnackBar("Operación exitosa")
             }
@@ -45,24 +49,36 @@ class Crud_Ropa : AppCompatActivity() {
 
         //Cambiamos la etiqueta por el nombre del diseñador en caso de que exista uno.
 
-        val nombreDiseñador = intent.getStringExtra("nombreDiseniador")
-        if(nombreDiseñador!=null){
-            findViewById<TextView>(R.id.txt_nombreAux).setText("DISEÑADOR: $nombreDiseñador")
+        val nombreDiseniador = intent.getStringExtra("nombreDiseniador")
+        if(nombreDiseniador!=null){
+            findViewById<TextView>(R.id.txt_nombreAux).setText("DISEÑADOR: $nombreDiseniador")
         }
+
+        val id_diseniador = intent.getIntExtra("id_diseniador", -1)
 
         //Agregamos los registros a la lista.
         val listView = findViewById<ListView>(R.id.lv_ropa)
-        val indiceDiseniador = intent.getIntExtra("posicionDiseniador", -1)
-        val listaRopa:ArrayList<Ropa>
 
-        /*
-        if(indiceDiseniador!=-1){
-            listaRopa = BaseDatosDiseniador.arregloDiseniador[indiceDiseniador].ropa
-        }else{
-            listaRopa = BaseDatosRopa.arregloRopa
+
+        actualizarListaElementos(id_diseniador)
+
+        //Para ir a agregar ropa.
+
+        val botonIrAgregarRopa = findViewById<Button>(R.id.btn_irAgregarRopa)
+        botonIrAgregarRopa.setOnClickListener {
+            val intentExplicito = Intent(this, AgregarRopa::class.java)
+            intentExplicito.putExtra("id_diseniador",id_diseniador)
+            callbackContenidoIntentExplicito.launch(intentExplicito)
         }
-         */
-        listaRopa = BaseDatosRopaSQLite.tablaRopa!!.listarRopa(1)
+
+
+        registerForContextMenu(listView)
+    }
+
+    fun actualizarListaElementos(id_diseniador: Int){
+        val listView = findViewById<ListView>(R.id.lv_ropa)
+
+        listaRopa = tablaRopa.listarRopa(id_diseniador)
 
         val adaptador = ArrayAdapter(
             this,
@@ -74,17 +90,6 @@ class Crud_Ropa : AppCompatActivity() {
         adaptadorGlobal = adaptador
         adaptador.notifyDataSetChanged()
 
-        //Para ir a agregar ropa.
-
-        val botonIrAgregarRopa = findViewById<Button>(R.id.btn_irAgregarRopa)
-        botonIrAgregarRopa.setOnClickListener {
-            val intentExplicito = Intent(this, AgregarRopa::class.java)
-            intentExplicito.putExtra("posicionDiseniador",indiceDiseniador)
-            callbackContenidoIntentExplicito.launch(intentExplicito)
-        }
-
-
-        registerForContextMenu(listView)
     }
 
     //Para mostrar el menú flotante
@@ -108,12 +113,16 @@ class Crud_Ropa : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.m_borrarRopa -> {
-                val indiceDiseniador = intent.getIntExtra("posicionDiseniador", -1)
+                val id_diseniador = intent.getIntExtra("id_diseniador", -1)
 
-                if(indiceDiseniador!=-1){
-                    BaseDatosDiseniador.arregloDiseniador[indiceDiseniador].ropa.removeAt(posicionItemSeleccionado)
+                if(id_diseniador!=-1){
+                    val id_ropaBorrar = tablaRopa.listarRopa(id_diseniador)[posicionItemSeleccionado].id
+                    tablaRopa.eliminarRopa(id_ropaBorrar)
                 }else{
-                    BaseDatosRopa.eliminarRopa(posicionItemSeleccionado)
+                    tablaRopa.eliminarRopa(
+                        tablaRopa.listarRopa(id_diseniador)[posicionItemSeleccionado].id
+                    )
+                    actualizarListaElementos(id_diseniador)
                 }
                 adaptadorGlobal.notifyDataSetChanged()
 
@@ -121,9 +130,12 @@ class Crud_Ropa : AppCompatActivity() {
             }
             R.id.m_editarRopa ->{
                 val intentE = Intent(this, EditarRopa::class.java)
+                val id_diseniador = intent.getIntExtra("id_diseniador", -1)
                 intentE.putExtra("posicionRopa", posicionItemSeleccionado)
-                intentE.putExtra("posicionDiseniador", intent.getIntExtra("posicionDiseniador", -1))
+                intentE.putExtra("id_diseniador", id_diseniador)
                 callbackContenidoIntentExplicito.launch(intentE)
+                actualizarListaElementos(id_diseniador)
+                adaptadorGlobal.notifyDataSetChanged()
                 return true
             }
             else -> super.onContextItemSelected(item)

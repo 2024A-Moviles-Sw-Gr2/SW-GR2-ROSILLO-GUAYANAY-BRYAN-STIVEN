@@ -1,6 +1,7 @@
 package com.example.deber02_bsrg.entidades
 
 class Ropa(
+    var id: Int,
     var nombre:String,
     var precio:Float,
     var tendencia:Boolean,

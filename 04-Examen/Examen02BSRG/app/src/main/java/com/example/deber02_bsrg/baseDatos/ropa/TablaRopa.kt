@@ -1,49 +1,34 @@
 package com.example.deber02_bsrg.baseDatos.ropa
 
-import android.content.Context
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteException
-import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
+import com.example.deber02_bsrg.baseDatos.SQLiteHelper
 import com.example.deber02_bsrg.entidades.Ropa
 
-class SQLiteRopaHelper(contexto: Context?):SQLiteOpenHelper(contexto, "bd", null, 1) {
-
-    override fun onCreate(db: SQLiteDatabase?) {
-        val scriptCrearTablaRopa =
-            """
-                CREATE TABLE LALO(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nombre VARCHAR (50)
-                )
-            """.trimIndent()
-        db?.execSQL(scriptCrearTablaRopa)
-    }
-
-    /*
-precio FLOAT,
-tendencia VARCHAR(100),
-lanzamiento VARCHAR (100),
-vidaUtils INTEGER
-*/
+class TablaRopa(contexto: Context?): SQLiteHelper(contexto) {
 
     fun agregarRopa(
-        nombre:String
+        nombre:String,
+        precio:Float,
+        tendencia:Boolean,
+        lanzamiento: String,
+        aniosVidaUtil: Int,
+        id_diseniador: Int
     ):Boolean{
         val conexionEscritura = writableDatabase
         val valoresGuardar = ContentValues()
-        valoresGuardar.put("nombre", "Chaleco")
-        /*
-        valoresGuardar.put("precio", 123.02f)
-        valoresGuardar.put("tendencia", "true")
-        valoresGuardar.put("lanzamiento", "02/02/2024")
-        valoresGuardar.put("vidaUtil", 9)
+        valoresGuardar.put("nombre", nombre)
+        valoresGuardar.put("precio", precio)
+        valoresGuardar.put("tendencia", tendencia.toString())
+        valoresGuardar.put("lanzamiento", lanzamiento)
+        valoresGuardar.put("vidaUtil", aniosVidaUtil)
 
-         */
+        if(id_diseniador!=-1){
+            valoresGuardar.put("id_diseniador", id_diseniador)
+        }
 
-        val resultadoGuardar = conexionEscritura.insert("LALO", null, valoresGuardar)
+        val resultadoGuardar = conexionEscritura.insert("ROPA", null, valoresGuardar)
         return resultadoGuardar.toInt() != -1
 
     }
@@ -51,9 +36,8 @@ vidaUtils INTEGER
     fun eliminarRopa(id: Int):Boolean{
         val conexionEscritura = writableDatabase
         val consultaEliminar = arrayOf(id.toString())
-        val resultadoEliminacion = conexionEscritura.delete("Ropa", "id=?", consultaEliminar)
+        val resultadoEliminacion = conexionEscritura.delete("ROPA", "id=?", consultaEliminar)
         conexionEscritura.close()
-
         return resultadoEliminacion.toInt() !=-1
     }
 
@@ -74,31 +58,36 @@ vidaUtils INTEGER
         valoresActualizar.put("vidaUtil", aniosVidaUtil)
         val consultaActualizar = arrayOf(id.toString())
 
-        val resultadoActualizar = conexionEscritura.update("Ropa", valoresActualizar, "id=?", consultaActualizar)
+        val resultadoActualizar = conexionEscritura.update("ROPA", valoresActualizar, "id=?", consultaActualizar)
         conexionEscritura.close()
 
         return resultadoActualizar.toInt() != -1
     }
 
-    fun listarRopa(idDiseniador: Int): ArrayList<Ropa> {
+    fun listarRopa(id_diseniador: Int): ArrayList<Ropa> {
         val arregloRopa = ArrayList<Ropa>()
-        /*
-        var resultadoConsultaListar:Cursor
-
+        var resultadoConsultaListar: Cursor
         val conexionLectura = readableDatabase
-        var scriptConsulta =
+
+        val scriptConsulta = if (id_diseniador != -1) {
+            """
+                SELECT * FROM ROPA
+                WHERE id_diseniador = ?
+            """.trimIndent()
+        } else {
             """
                 SELECT * FROM ROPA
             """.trimIndent()
+        }
 
-        resultadoConsultaListar = conexionLectura.rawQuery(scriptConsulta,null)
-
+        resultadoConsultaListar = conexionLectura.rawQuery(scriptConsulta,if (id_diseniador != -1) arrayOf(id_diseniador.toString()) else null)
 
         val existeUno = resultadoConsultaListar.moveToFirst()
 
         if (existeUno){
             do {
                 val ropa = Ropa(
+                    resultadoConsultaListar.getInt(0),
                     resultadoConsultaListar.getString(1),
                     resultadoConsultaListar.getFloat(2),
                     resultadoConsultaListar.getString(3).toBoolean(),
@@ -111,35 +100,6 @@ vidaUtils INTEGER
         resultadoConsultaListar.close()
         conexionLectura.close()
 
-
-
-         */
         return arregloRopa
     }
-
-
-
-
-
-    /*
-    if(idDiseniador!=-1){
-        scriptConsulta +=
-            """
-                 where id = ?
-            """.trimIndent()
-        val consultaListar = arrayOf(idDiseniador.toString())
-        resultadoConsultaListar = conexionLectura.rawQuery(scriptConsulta, consultaListar)
-    }else{
-        resultadoConsultaListar = conexionLectura.rawQuery(scriptConsulta,null)
-    }
-
-     */
-
-
-
-
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
-    }
-
 }

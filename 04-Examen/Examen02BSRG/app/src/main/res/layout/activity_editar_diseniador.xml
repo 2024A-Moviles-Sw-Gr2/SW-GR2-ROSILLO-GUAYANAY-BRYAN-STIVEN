@@ -31,16 +31,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/txt_valorMercadoDiseniadorActualizar"
+        android:id="@+id/txt_ubicacionDiseniadorActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Valor de mercado"
+        android:text="Ubicación"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombreDiseniadorActualizar" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_unisexDiseniadorActualizar" />
 
     <EditText
         android:id="@+id/txt_coleccionesDiseniadorActualizar"
@@ -51,8 +51,9 @@
         android:inputType="text"
         android:text="Num. Colecciones"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_valorMercadoDiseniadorActualizar" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreDiseniadorActualizar" />
 
     <EditText
         android:id="@+id/txt_unisexDiseniadorActualizar"
@@ -70,11 +71,11 @@
         android:id="@+id/btn_actualizarDiseniador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#0A153A"
         android:text="Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_unisexDiseniadorActualizar" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_ubicacionDiseniadorActualizar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
