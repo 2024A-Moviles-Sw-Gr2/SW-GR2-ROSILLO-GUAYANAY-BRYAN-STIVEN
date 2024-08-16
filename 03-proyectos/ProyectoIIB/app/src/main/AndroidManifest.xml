@@ -13,10 +13,10 @@
         android:theme="@style/Theme.ProyectoIIB"
         tools:targetApi="31">
         <activity
-            android:name=".vista.actividadNota.NuevaNota"
+            android:name=".vista.nota.NuevaNota"
             android:exported="false" />
         <activity
-            android:name=".vista.actividadNota.NuevaActividad"
+            android:name=".vista.actividad.NuevaActividad"
             android:exported="false" />
         <activity
             android:name=".vista.actividadNota.ActividadNotaLayout"

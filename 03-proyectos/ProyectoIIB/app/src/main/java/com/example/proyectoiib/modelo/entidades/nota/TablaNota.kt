@@ -9,11 +9,13 @@ class TablaNota(contexto: Context?): SQLiteHelper(contexto)  {
     fun agregarNota(
         titulo: String,
         descripcion: String,
+        id_asignatura: Int
     ){
         val conexionEscritura = writableDatabase
         val valoresGuardar = ContentValues()
         valoresGuardar.put("titulo", titulo)
         valoresGuardar.put("descripcion", descripcion)
+        valoresGuardar.put("id_asignatura", id_asignatura)
         conexionEscritura.insert("NOTA", null, valoresGuardar)
     }
 

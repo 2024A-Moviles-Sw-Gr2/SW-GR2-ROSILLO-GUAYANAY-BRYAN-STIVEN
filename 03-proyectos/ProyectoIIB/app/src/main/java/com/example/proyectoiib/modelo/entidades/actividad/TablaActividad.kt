@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import com.example.proyectoiib.modelo.baseDatos.SQLiteHelper
 
+
 class TablaActividad(contexto: Context?):SQLiteHelper(contexto) {
     fun agregarActividad(
         titulo: String,

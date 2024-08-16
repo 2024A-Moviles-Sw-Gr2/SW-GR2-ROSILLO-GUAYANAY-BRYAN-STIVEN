@@ -1,7 +1,6 @@
-package com.example.proyectoiib.vista.actividadNota
+package com.example.proyectoiib.vista.actividad
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoiib.R
 import com.example.proyectoiib.modelo.entidades.actividad.TablaActividad
 import com.example.proyectoiib.vista.recyclerView.RecyclerViewActividades
-import com.example.proyectoiib.vista.recyclerView.RecyclerViewAsignaturas
 
 class FragmentoActividades() : Fragment() {
+
 
     private var id_asignatura: Int = 0
     private lateinit var rootView: View
 
+    //Rescate del id_asignatura transmitido.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         id_asignatura = arguments?.getInt("id_asignatura") ?: 0
@@ -40,16 +40,19 @@ class FragmentoActividades() : Fragment() {
         }
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
+
+        //Inicialización del view.
         rootView = inflater.inflate(R.layout.fragment_fragmento_actividades, container, false)
         inicializarRecyclerView(rootView)
 
+        //Evento para abrir la interfaz para agregar una actividad.
         val botonAgregarActividad = rootView.findViewById<Button>(R.id.btn_agregarActividad)
-
         botonAgregarActividad.setOnClickListener {
             val intent = Intent(rootView.context, NuevaActividad::class.java)
             intent.putExtra("id_asignatura", id_asignatura)
@@ -77,6 +80,8 @@ class FragmentoActividades() : Fragment() {
 
     }
 
+
+    //Creación de un nuevo fragmento.
     companion object {
         fun newInstance(idAsignatura: Int): FragmentoActividades {
             val fragment = FragmentoActividades()

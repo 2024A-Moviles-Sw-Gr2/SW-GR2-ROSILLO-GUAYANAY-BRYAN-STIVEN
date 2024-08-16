@@ -4,7 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-open class SQLiteHelper(contexto: Context?):SQLiteOpenHelper(contexto, "proyecto", null,1) {
+//Clase encargada de la creación de la BD
+open class SQLiteHelper(contexto: Context?):SQLiteOpenHelper(contexto, "proyectoiib", null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val scriptCrearTablaAsignatura =
             """
@@ -25,7 +26,7 @@ open class SQLiteHelper(contexto: Context?):SQLiteOpenHelper(contexto, "proyecto
                     fechaLimite VARCHAR(100),
                     descripcion VARCHAR(100),
                     id_asignatura INTEGER,
-                    FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id)
+                    FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id) ON DELETE CASCADE
                 )
             """.trimIndent()
         db?.execSQL(scriptCrearTablaActividad)
@@ -37,7 +38,7 @@ open class SQLiteHelper(contexto: Context?):SQLiteOpenHelper(contexto, "proyecto
                     titulo VARCHAR(100),
                     descripcion VARCHAR(100),
                     id_asignatura INTEGER,
-                    FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id)
+                    FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id) ON DELETE CASCADE
                 )
             """.trimIndent()
         db?.execSQL(scriptCrearTablaNota)

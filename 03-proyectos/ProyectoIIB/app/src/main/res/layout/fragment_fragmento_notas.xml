@@ -4,7 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.actividadNota.FragmentoNotas">
+    tools:context=".vista.nota.FragmentoNotas">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notas"
+        android:layout_width="380dp"
+        android:layout_height="570dp"
+        android:layout_gravity="center_horizontal|center_vertical" />
 
     <Button
         android:id="@+id/btn_agregarNota"

@@ -1,4 +1,4 @@
-package com.example.proyectoiib.vista.actividadNota
+package com.example.proyectoiib.vista.actividad
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,13 +16,16 @@ class NuevaActividad : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nueva_actividad)
 
+        //Rescate del id_asignatura transmitido.
         val idAsignatura = intent.getIntExtra("id_asignatura", -1)
 
+        //Evento para finalizar la actividad.
         val botonCancelarAgregar = findViewById<Button>(R.id.btn_cancelarAgregarActividad)
         botonCancelarAgregar.setOnClickListener {
             finish()
         }
 
+        //Evento que rescata los datos, y los guarda en la tabla de la BD.
         val botonAceptarAgregar = findViewById<Button>(R.id.btn_aceptarAgregarActividad)
         botonAceptarAgregar.setOnClickListener {
             val tituloActividad = findViewById<TextView>(R.id.txt_tituloActividadAgregar).text.toString()

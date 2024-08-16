@@ -54,6 +54,7 @@ class RecyclerViewAsignaturas(
         holder.profesorAsignatura.text = asignaturaActual.profesor
         holder.aulaAsignatura.text = asignaturaActual.aula
 
+        //Evento para abrir la interfaz actividad-nota.
         holder.frameAsignatura.setOnClickListener {
             val intent = Intent(contexto, ActividadNotaLayout::class.java)
             intent.putExtra("id_asignatura", asignaturaActual.id)
@@ -64,6 +65,8 @@ class RecyclerViewAsignaturas(
             contexto.startActivity(intent)
         }
 
+
+        //Evento para eliminar la asignatura
         holder.botonEliminar.setOnClickListener {
             tablaAsignatura.eliminarAsignatura(asignaturaActual.id)
             contexto.inicializarRecyclerView()

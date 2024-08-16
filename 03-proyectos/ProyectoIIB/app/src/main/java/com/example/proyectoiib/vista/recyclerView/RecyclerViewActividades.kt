@@ -1,17 +1,15 @@
 package com.example.proyectoiib.vista.recyclerView
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoiib.R
 import com.example.proyectoiib.modelo.entidades.actividad.Actividad
 import com.example.proyectoiib.modelo.entidades.actividad.TablaActividad
-import com.example.proyectoiib.vista.actividadNota.FragmentoActividades
+import com.example.proyectoiib.vista.actividad.FragmentoActividades
 
 class RecyclerViewActividades(
     private val contexto: FragmentoActividades,

@@ -16,6 +16,8 @@ import com.example.proyectoiib.vista.recyclerView.RecyclerViewAsignaturas
 import com.google.android.material.snackbar.Snackbar
 
 class AsignaturasLayout : AppCompatActivity() {
+
+
     val tablaAsignatura = TablaAsignatura(this)
 
     val callbackContenidoIntentExplicito =
@@ -35,8 +37,11 @@ class AsignaturasLayout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_asignaturas)
+
+        //Inicializar el recycler view de asignaturas
         inicializarRecyclerView()
 
+        //Botón para abrir la actividad que nos permite crear una asignatura.
         val botonAgregarAsignatura = findViewById<Button>(R.id.btn_agregarAsignatura)
         botonAgregarAsignatura.setOnClickListener {
             val intent = Intent(this, NuevaAsignatura::class.java)
@@ -46,6 +51,7 @@ class AsignaturasLayout : AppCompatActivity() {
 
     }
 
+    //Método útil para colocar las asignaturas en el recycler view.
     fun inicializarRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_asignaturas)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -63,7 +69,7 @@ class AsignaturasLayout : AppCompatActivity() {
 
     }
 
-
+    //Para mostrar un mensaje al crear una asignatura.
     fun mostrarSnackBar(texto:String){
         val snack = Snackbar.make(
             findViewById(R.id.ly_inicioAsignaturas),
