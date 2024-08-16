@@ -12,7 +12,7 @@ open class SQLiteHelper(contexto: Context?): SQLiteOpenHelper(contexto, "onebd",
     override fun onCreate(db: SQLiteDatabase?) {
         val scriptCrearTablaRopa =
             """
-                CREATE TABLE ROPA(
+                CREATE TABLE ROPA(  
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nombre VARCHAR (50),
                     precio FLOAT,
